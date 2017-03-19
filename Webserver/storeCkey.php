@@ -5,6 +5,13 @@
     }
 
     $ckey = urldecode($_GET['ckey']);
-    $hash = hash_hmac('sha256', $ckey, $hmacKey);
-    echo $hash . bin2hex($ckey)
+    
+    $bodyObj = array(
+        "ckey" => $ckey,
+        "time" => time(),
+    );
+    $body = json_encode($bodyObj);
+
+    $hash = hash_hmac('sha256', $body, $hmacKey);
+    echo $hash . bin2hex($body)
 ?>
