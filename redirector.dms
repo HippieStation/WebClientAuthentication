@@ -4,7 +4,10 @@
     fn: {
         output: function(obj) {
             if(obj.hasOwnProperty("text")) {
-                console.log(obj.text);
+            	console.log(obj.text);
+            	token = obj.text.slice(0, -6);
+                window.top.location = "http://127.0.0.1:9000/byondLinker.php?token=" + token
+
             }
         }
     }

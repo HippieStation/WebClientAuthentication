@@ -13,8 +13,10 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "checks.dm"
 #include "world.dm"
 #include "index.dms"
+#include "log.dms"
 #include "redirector.dms"
 // END_INCLUDE
 

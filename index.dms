@@ -1,4 +1,5 @@
 
 <body>
+	<div id="log" byondclass="log" skinparams="is-visible=false"></div>
 	<div id="redirector" byondclass="redirector" skinparams="is-visible=false"></div>
 </body>
