@@ -33,3 +33,5 @@ Now that you've done this, you'll need to edit `world.dm` and `redirector.dms`
 
 - world.dm needs to have the link to the storeCkey.php script on your server set, ideally host this on the same server as the server running the verifier server
 - redirector.dms needs to have the link in the JavaScript function changed, this is what it should look like: `"https://yourwebsite.com/pages/byondlink-verify/?token=" + token`
+
+If you wanna show the username under the avatar on new posts, I suggest reading this XenForo thread: https://xenforo.com/community/threads/how-to-display-custom-fields-under-user-avatar.44400/
