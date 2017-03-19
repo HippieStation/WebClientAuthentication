@@ -1,0 +1,13 @@
+<byondclass name="redirector">
+<script>
+{
+    fn: {
+        output: function(obj) {
+            if(obj.hasOwnProperty("text")) {
+                console.log(obj.text);
+            }
+        }
+    }
+}
+</script>
+</byondclass>

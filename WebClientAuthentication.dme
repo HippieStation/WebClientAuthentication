@@ -13,5 +13,8 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "world.dm"
+#include "index.dms"
+#include "redirector.dms"
 // END_INCLUDE
 
