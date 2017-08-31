@@ -13,7 +13,7 @@ client
 		src << output("Contacting server...", "log")
 
 		var/payload = url_encode(src.key)
-		var/http[] = world.Export("http://127.0.0.1/edsa-XenForo/BYONDLinkGenerateToken?ckey=[payload]")
+		var/http[] = world.Export("http://127.0.0.1/edsa-xenforo/BYONDLinkGenerateToken?ckey=[payload]")
 		if(!http)
 			src << output("Server is down. please try again later.", "log")
 			return FALSE

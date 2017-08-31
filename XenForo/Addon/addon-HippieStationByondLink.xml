@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<addon addon_id="HippieStationByondLink" title="BYOND Link" version_string="1" version_id="1" url="https://hippiestation.com/" install_callback_class="HippieStation_BYONDLink_Installer" install_callback_method="install" uninstall_callback_class="HippieStation_BYONDLink_Installer" uninstall_callback_method="uninstall">
+<addon addon_id="HippieStationByondLink" title="BYOND Link" version_string="2" version_id="2" url="https://hippiestation.com/" install_callback_class="HippieStation_BYONDLink_Installer" install_callback_method="install" uninstall_callback_class="HippieStation_BYONDLink_Installer" uninstall_callback_method="uninstall">
   <admin_navigation/>
   <admin_permissions/>
   <admin_style_properties/>
@@ -17,6 +17,12 @@
   <email_template_modifications/>
   <optiongroups>
     <group group_id="HippieStationBYONDLink" display_order="1" debug_only="0"/>
+    <option option_id="BYONDLinkErrorMessage" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value>Before you can perform certain actions on this forum you must link your BYOND account to your forum account. Hop on the server, go to the OOC tab and click "Link Forum"</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="HippieStationBYONDLink" display_order="5"/>
+    </option>
     <option option_id="BYONDLinkHMACKey" edit_format="textbox" data_type="string" can_backup="1">
       <default_value></default_value>
       <edit_format_params></edit_format_params>
@@ -42,6 +48,8 @@
     <interface_groups/>
   </permissions>
   <phrases>
+    <phrase title="option_BYONDLinkErrorMessage" version_id="1" version_string="1"><![CDATA[Error Message]]></phrase>
+    <phrase title="option_BYONDLinkErrorMessage_explain" version_id="1" version_string="1"><![CDATA[The error message which will be shown when someone is unable to post, You can reference the WebAuthServer using %s]]></phrase>
     <phrase title="option_BYONDLinkHMACKey" version_id="1" version_string="1"><![CDATA[HMAC Key]]></phrase>
     <phrase title="option_BYONDLinkHMACKey_explain" version_id="1" version_string="1"><![CDATA[A secure key used to verify messages between this server, the game server and the client, do not allow anyone to get this or they can spoof their ckey on the forums.]]></phrase>
     <phrase title="option_BYONDLinkServers" version_id="1" version_string="1"><![CDATA[Server IPs]]></phrase>

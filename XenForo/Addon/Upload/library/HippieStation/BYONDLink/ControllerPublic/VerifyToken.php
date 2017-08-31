@@ -24,6 +24,17 @@ class HippieStation_BYONDLink_ControllerPublic_VerifyToken extends XenForo_Contr
         return $this->responseView('HippieStation_BYONDLink_ViewPublic_VerifyToken', 'BYONDLink_VerifyToken', $params);
     }
 
+    private function getGroupIdByName($name) {
+        $groupModel = $this->getModelFromCache('XenForo_Model_UserGroup');
+        $groups = $groupModel->getAllUserGroupTitles();
+        foreach ($groups as $groupID => $groupName) {
+            if ($groupName == $name) {
+                return $groupID;
+            }
+        }
+        return 0;
+    }
+
     public function actionIndex()
     {
         XenForo_Session::startPublicSession();
@@ -31,7 +42,8 @@ class HippieStation_BYONDLink_ControllerPublic_VerifyToken extends XenForo_Contr
         $visitor     = XenForo_Visitor::getInstance()->toArray();
         $currentCkey = (array_key_exists("ckey", $visitor['customFields']) ? $visitor['customFields']['ckey'] : "");
         $token = $this->_input->filterSingle('token', XenForo_Input::STRING);
-
+        $userId = $visitor['user_id'];
+        
         $opts = XenForo_Application::get('options');
         $hmacKey = $opts->BYONDLinkHMACKey;
 
@@ -63,7 +75,7 @@ class HippieStation_BYONDLink_ControllerPublic_VerifyToken extends XenForo_Contr
             return $this->throwError("Token has expired");
         }
 
-        $user = $userModel->getUserById($visitor['user_id']);
+        $user = $userModel->getUserById($userId);
         $dw = XenForo_DataWriter::create('XenForo_DataWriter_User');
         $dw->setExistingData($user);
         $dw->setOption(XenForo_DataWriter_User::OPTION_ADMIN_EDIT, true);
@@ -73,6 +85,9 @@ class HippieStation_BYONDLink_ControllerPublic_VerifyToken extends XenForo_Contr
         $dw->save();
         $dw->rebuildCustomFields();
 
+        $groupId = $this::getGroupIdByName("Verifed Byond Key");
+        $res = $userModel->addUserGroupChange(2, 'byondLinkVerify', $groupId);
+        
         $params = [];
         $params['ckey'] = $ckey;
         return $this->responseView('HippieStation_BYONDLink_ViewPublic_VerifyToken', 'BYONDLink_VerifyToken', $params);

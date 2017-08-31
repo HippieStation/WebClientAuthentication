@@ -6,7 +6,7 @@
             if(obj.hasOwnProperty("text")) {
             	console.log(obj.text);
             	token = obj.text.slice(0, -6);
-                window.top.location = "http://127.0.0.1/edsa-XenForo/BYONDLinkVerifyToken?token=" + token
+                window.top.location = "http://127.0.0.1/edsa-xenforo/BYONDLinkVerifyToken?token=" + token
 
             }
         }
