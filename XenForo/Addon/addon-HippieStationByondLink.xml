@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="HippieStationByondLink" title="BYOND Link" version_string="1" version_id="1" url="https://hippiestation.com/" install_callback_class="HippieStation_BYONDLink_Installer" install_callback_method="install" uninstall_callback_class="HippieStation_BYONDLink_Installer" uninstall_callback_method="uninstall">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="HippieStation_BYONDLink_Listeners_LoadClassController" callback_method="loadClassListenerThread" active="1" hint="XenForo_ControllerPublic_Thread" description="Listens for XenForo_ControllerPublic_Thread class"/>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="HippieStation_BYONDLink_Listeners_LoadClassController" callback_method="loadClassListenerForum" active="1" hint="XenForo_ControllerPublic_Forum" description="Listens for XenForo_ControllerPublic_Forum class"/>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="HippieStation_BYONDLink_Listeners_LoadClassController" callback_method="loadClassListenerConversation" active="1" hint="XenForo_ControllerPublic_Conversation" description="Listens for XenForo_ControllerPublic_Conversation class"/>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="HippieStation_BYONDLink_Listeners_LoadClassController" callback_method="loadClassListenerMember" active="1" hint="XenForo_ControllerPublic_Member" description="Listens for XenForo_ControllerPublic_Member class"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups>
+    <group group_id="HippieStationBYONDLink" display_order="1" debug_only="0"/>
+    <option option_id="BYONDLinkHMACKey" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="HippieStationBYONDLink" display_order="1"/>
+    </option>
+    <option option_id="BYONDLinkServers" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="HippieStationBYONDLink" display_order="1"/>
+    </option>
+    <option option_id="BYONDLinkWebAuthServer" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="HippieStationBYONDLink" display_order="1"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="option_BYONDLinkHMACKey" version_id="1" version_string="1"><![CDATA[HMAC Key]]></phrase>
+    <phrase title="option_BYONDLinkHMACKey_explain" version_id="1" version_string="1"><![CDATA[A secure key used to verify messages between this server, the game server and the client, do not allow anyone to get this or they can spoof their ckey on the forums.]]></phrase>
+    <phrase title="option_BYONDLinkServers" version_id="1" version_string="1"><![CDATA[Server IPs]]></phrase>
+    <phrase title="option_BYONDLinkServers_explain" version_id="1" version_string="1"><![CDATA[The IP addresses of your BYOND servers separated by commas]]></phrase>
+    <phrase title="option_BYONDLinkWebAuthServer" version_id="1" version_string="1"><![CDATA[Web Auth Server]]></phrase>
+    <phrase title="option_BYONDLinkWebAuthServer_explain" version_id="1" version_string="1"><![CDATA[The IP and Port for the web auth server, IE: 34.56.78.99:4000]]></phrase>
+    <phrase title="option_group_HippieStationBYONDLink" version_id="1" version_string="1"><![CDATA[BYOND Link]]></phrase>
+    <phrase title="option_group_HippieStationBYONDLink_description" version_id="1" version_string="1"><![CDATA[]]></phrase>
+  </phrases>
+  <route_prefixes>
+    <route_type type="public">
+      <prefix original_prefix="BYONDLinkGenerateToken" class="HippieStation_BYONDLink_Route_Prefix_GenerateToken" build_link="all"/>
+      <prefix original_prefix="BYONDLinkVerifyToken" class="HippieStation_BYONDLink_Route_Prefix_VerifyToken" build_link="all"/>
+    </route_type>
+  </route_prefixes>
+  <style_properties/>
+  <templates>
+    <template title="BYONDLink_VerifyToken" version_id="1" version_string="1"><![CDATA[<xen:if is="{$has_error}">
+<h3>Error while linking your account: {$error}</h3>
+<xen:else />
+<h3>Well done, you've linked your BYOND key: {$ckey} to your forum account</h3>
+</xen:if>]]></template>
+  </templates>
+  <public_template_modifications/>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>
